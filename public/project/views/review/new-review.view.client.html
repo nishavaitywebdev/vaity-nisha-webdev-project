@@ -1,0 +1,62 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid row">
+        <div class="row">
+            <a class="" href="#/user/{{model.userId}}/hotelDetails/{{model.hotelId}}"><span class="glyphicon glyphicon-chevron-left white-glyphicon">
+              </span></a>
+            <a class=" navbar-text-decor" href="#">
+                Review
+            </a>
+
+
+            <a ng-click="model.addReview(model.userId, model.hotelId,model.review)" class="">
+              <span class="glyphicon glyphicon-ok white-glyphicon pull-right">
+              </span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="padding-navbar div-website-list">
+        <!--<form>-->
+
+            <!--<div class="form-group">-->
+                <!--<label>Rating</label>-->
+                <!--<fieldset class="rating">-->
+                    <!--<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>-->
+                    <!--<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>-->
+                    <!--<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>-->
+                    <!--<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>-->
+                    <!--<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>-->
+                    <!--<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>-->
+                    <!--<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>-->
+                    <!--<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>-->
+                    <!--<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>-->
+                    <!--<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
+                <!--</fieldset>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="new-review">Comments</label>-->
+                <!--<input type="textarea" ng-model="model.review.comment" class="form-control" id="new-review" placeholder="Comment">-->
+            <!--</div></form>-->
+
+        <!--<div ng-show="model.alert" class="alert alert-danger">-->
+            <!--{{model.alert}}-->
+        <!--</div>-->
+        <form>
+            <textarea type="text"
+                   ng-model="model.review.comment"
+                   class="form-control"
+                   placeholder="reviewComment"/>
+        </form>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user white-glyphicon pull-right"></span>
+            </a>
+        </div>
+    </div>
+</nav>

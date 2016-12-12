@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <a class=" navbar-text-decor" href="#">
+                Admin Home
+            </a>
+            <!--<a href="" ng-click = "model.updateUser(model.userId,model.user)" class="">-->
+              <!--<span class="glyphicon glyphicon-ok white-glyphicon pull-right">-->
+              <!--</span>-->
+            <!--</a>-->
+        </div>
+    </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <ul>
+        <li ng-repeat="user in users">
+            {{user.firstName}}
+        </li>
+    </ul>>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user white-glyphicon pull-right"></span>
+            </a>
+        </div>
+    </div>
+</nav>
