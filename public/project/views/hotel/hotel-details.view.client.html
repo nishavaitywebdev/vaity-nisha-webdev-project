@@ -58,6 +58,9 @@
                                     <div class="comment-author vcard">
                                         <img src="https://secure.gravatar.com/avatar/3e4153bc3fc407dfeca1bce714d933df?s=60&amp;d=mm&amp;r=g" width="60" height="60" alt="" class="avatar avatar-60wp-user-avatar wp-user-avatar-60 alignnone photo avatar-default">
                                         <b class="fn">{{userReview.username}}</b> <span class="says"> says:</span>
+                                        <a ng-click="model.addFollower(model.userId, userReview._user)">
+                                            <span class="fa fa-plus fa-lg pull-right"> Follow </span>
+                                        </a>
                                     </div><!-- .comment-author -->
 
                                     <div class="comment-metadata">

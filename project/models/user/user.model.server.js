@@ -14,11 +14,29 @@ module.exports = function () {
         updateUser : updateUser,
         deleteUser : deleteUser,
         findUserByFacebookId: findUserByFacebookId,
+        addFollower: addFollower,
         setModel: setModel //,
         //findWebsitesForUser: findWebsitesForUser
     };
     return api;
 
+    function addFollower(followerId, followeeId) {
+        return model.userModel
+            .findUserById(followerId)
+            .then(function (followerUserObj) {
+                followerUserObj.following.push(followeeId);
+                followerUserObj.save();
+                return model.userModel
+                    .findUserById(followeeId)
+                    .then(function (followeeUserObj) {
+                        followeeUserObj.followers.push(followerId);
+                        followeeUserObj.followerNames.push(followerUserObj.username);
+                        followerUserObj.followingNames.push(followeeUserObj.username);
+                        followerUserObj.save();
+                        return followeeUserObj.save();
+                    })
+            })
+    }
 
     function findUserByFacebookId(facebookId) {
         return UserModel.findOne({'facebook.id': facebookId});

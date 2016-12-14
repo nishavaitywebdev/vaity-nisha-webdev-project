@@ -54,6 +54,7 @@ module.exports = function(app,model){
     app.post('/api/logout', logout);
     app.get('/api/user', findUser);
     app.post ('/api/register', register);
+    app.put('/api/follower/', addFollower);
     //app.get('/api/loggedin', loggedin);
     //app.get('/api/user?username=username&password=password',findUserByCredentials);
     app.get('/api/user/:userId',findUserById);
@@ -61,6 +62,22 @@ module.exports = function(app,model){
     app.put('/api/user/:userId',loggedInAndSelf, updateUser);
     app.delete('/api/user/:userId', loggedInAndSelf, deleteUser);
 
+
+    function addFollower(req, res) {
+        var followerId = req.body.followerId;
+        var followeeId = req.body.followeeId;
+
+        model
+            .userModel
+            .addFollower(followerId, followeeId)
+            .then(function (status) {
+                    res.send(status);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                })
+
+    }
 
     function register(req, res) {
         //console.log("In project user service")

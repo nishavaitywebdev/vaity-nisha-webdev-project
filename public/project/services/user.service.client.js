@@ -26,11 +26,21 @@
             logout:logout,
             register:register,
             checkLogin: checkLogin,
-            checkAdmin: checkAdmin
+            checkAdmin: checkAdmin,
+            addFollower:addFollower
 
     };
         return api;
 
+
+        function addFollower(followerId, followeeId) {
+            var url = '/api/follower/';
+            var follow = {
+                followerId:followerId,
+                followeeId:followeeId
+            }
+            return $http.put(url,follow);
+        }
 
         function findCurrentUser() {
             var url = '/api/user/';

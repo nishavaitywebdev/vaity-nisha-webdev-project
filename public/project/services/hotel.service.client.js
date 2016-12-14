@@ -29,6 +29,7 @@
     }
     function createHotel(hotel) {
         var url = "/api/hotelNew/"+hotel;
+        console.log(url);
         return $http.post(url);
     }
     }

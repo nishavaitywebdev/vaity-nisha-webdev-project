@@ -9,14 +9,15 @@ module.exports = function(app,model){
 
     function createHotel(req, res) {
         //console.log(req.params.hid);
-        var hotel = {};
-        hotel["hotelId"] = req.params.hid;
+        var hotelNew = {};
+        hotelNew["hotelId"] = req.params.hid;
         model.hotelModel.findHotelByIbiboHotelId(req.params.hid)
             .then(function (hotel) {
-                //console.log(hotel);
+                console.log(hotel);
                 if(!hotel){
-                    model.hotelModel.createHotel(hotel)
+                    model.hotelModel.createHotel(hotelNew)
                         .then(function (hotelObj) {
+                            console.log(hotelObj);
                                 res.send(hotelObj);
                             },
                             function (err) {

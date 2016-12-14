@@ -9,7 +9,7 @@
         $routeProvider
             .when("/user/:uid/home", {
                 templateUrl: "/project/views/user/homepage.html",
-                controller: "HotelListController",
+                controller: "CityListController",
                 controllerAs: "model"
             })
             .when("/user/:uid/hotelDetails/:hid",{
@@ -47,14 +47,14 @@
                 controller: "AdminRegisterController",
                 controllerAs: "model"
             })
-            .when("/user", {
-                templateUrl: "/project/views/user/profile.view.client.html",
-                controller: "ProfileController",
-                controllerAs: "model",
-                resolve: {
-                    checkLogin: checkLogin
-                }
-            })
+            // .when("/user", {
+            //     templateUrl: "/project/views/user/profile.view.client.html",
+            //     controller: "ProfileController",
+            //     controllerAs: "model",
+            //     resolve: {
+            //         checkLogin: checkLogin
+            //     }
+            // })
             .when("/userAdmin", {
                 templateUrl: "/project/views/admin/admin-home.view.client.html",
                 controller: "AdminProfileController",

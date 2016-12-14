@@ -5,15 +5,40 @@
     var app = angular
         .module("MakeYourTourApp")
         .controller("HotelListController", HotelListController)
-        .controller("HotelDetailsController", HotelDetailsController);
+        .controller("HotelDetailsController", HotelDetailsController)
+        .controller("CityListController", CityListController);
 
     //console.log("Hello outside hotel list controller");
 
     //$routeParams, HotelService
-    function HotelDetailsController($routeParams, HotelService, ReviewService) {
+
+    function CityListController($routeParams, HotelService, ReviewService) {
+        var vm = this;
+        vm.userId = $routeParams.uid;
+        function init() {
+            vm.userId = $routeParams.uid;
+        }init()
+    }
+    function HotelDetailsController($location, $routeParams, HotelService, ReviewService, UserService) {
         var vm = this;
         vm.hotelId = $routeParams.hid;
         vm.userId = $routeParams.uid;
+
+        vm.addFollower = addFollower;
+
+
+        function addFollower(followerId, followeeId) {
+            var promise = UserService.addFollower(followerId, followeeId);
+            promise
+                .success(function (user) {
+                    console.log(user);
+                    //$location.url("/user/"+vm.userId+"/hotelDetails/"+vm.hotelId);
+                })
+                .error(function (err) {
+                    console.log(err);
+                })
+        }
+
         //console.log(vm.hotelId);
         function init() {
             var promise = HotelService.findHotelById(vm.hotelId);
@@ -21,6 +46,13 @@
                 .success(function (hotelDetails) {
                     vm.hotelDetails = hotelDetails.data[vm.hotelId].hotel_data_node;
                     HotelService.createHotel(vm.hotelId);
+                    // promHOtCreate.
+                    //     success(function (data) {
+                    //     console.log(data);
+                    // })
+                    //     .error(function (err) {
+                    //         console.log(err);
+                    //     })
                     var prom = ReviewService.findReviewByHotelId(vm.hotelId);
                     prom
                         .success(function (UserReviews) {
@@ -67,10 +99,22 @@
         //console.log("Hello in hotel list controller");
         var vm = this;
         vm.userId = $routeParams.uid;
+        vm.getCityId = getCityId;
+
+        function getCityId(city) {
+            console.log(city);
+            var promise = CityService.findCityByName(city);
+            promise
+                .success(function (id) {
+                    console.log(id);
+
+                })
+        }
 
         function init() {
             //console.log("Hi");
             vm.cityId = $routeParams.cid;
+            vm.userId = $routeParams.uid;
             // //console.log(vm.cityName);
             // var promise = CityService.findCityByName(vm.cityName);
             // promise
@@ -95,13 +139,12 @@
             promise
                 .success(function (hotels) {
                     vm.hotels_list = hotels.data;
-
                 })
                 .error(function () {
 
                 });
             // vm.hotels_list = hotel_list;
-            console.log(vm.hotels_list);
+            //console.log(vm.hotels_list);
         }
 
         init();

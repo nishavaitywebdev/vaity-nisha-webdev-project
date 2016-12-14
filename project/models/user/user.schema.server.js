@@ -11,6 +11,10 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone: String,
+        followerNames: [String],
+        followers: [{type : mongoose.Schema.Types.ObjectId, ref:'UserModel'}],
+        followingNames: [String],
+        following: [{type : mongoose.Schema.Types.ObjectId, ref:'UserModel'}],
         facebook: {
             id:    String,
             token: String,

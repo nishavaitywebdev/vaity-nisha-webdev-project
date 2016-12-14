@@ -19,8 +19,10 @@
                 <input ng-model="searchText" type="text" class="form-control" placeholder="Search Hotels by City">
                 <span class="input-group-btn">
                     <!--ng-click="model.searchPhotos(searchText)" -->
-        <a href="#/user/{{model.userId}}/hotel/{{searchText}}"
-                class="btn btn-default" type="button">
+        <!--<a href="#/user/{{model.userId}}/hotel/{{searchText}}"-->
+                <!--class="btn btn-default" type="button">-->
+                    <a href="#/api/getCityId/{{searchText}}"
+                       class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>Search Hotels
         </a>
     </span>
