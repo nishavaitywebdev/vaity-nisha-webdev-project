@@ -13,23 +13,14 @@ module.exports = function(app, model){
 
 
     function findReviewByHotelId(req, res) {
+        console.log("Found reviews");
         var hotelId = req.params.hid;
-        return HotelModel
-            .findHotelByIbiboHotelId(hotelId)
-            .then(function (hotelObj) {
-                return ReviewModel
-                    .findReviewByHotelId(hotelObj._id)
+        return ReviewModel
+                    .findAllReviews(hotelId)
                     .then(function (reviews) {
+                        //console.log(reviews);
                         res.json(reviews);
                     });
-            },
-                function(error){
-                return HotelModel
-                    .createHotel(hotelId)
-                    .then(function (hotelObj) {
-                        res.statusCode(200);
-                    })
-                });
     }
 
     function createReview(req,res){
@@ -38,27 +29,13 @@ module.exports = function(app, model){
         var hotelReview = req.body;
         var hotelId = hotelReview._hotel;
         var reviewNew = {
-            comment:hotelReview.comment
+            comment:hotelReview.comment,
+            hotelId: hotelId
         }
-        //var id = (Math.floor(100000 + Math.random() * 900000)).toString();
-        //id = id.substring(-2);
-
-        //website._id = id;
-        //hotelReview._user = userId;
-        // websites.push(website);
-        // res.send(userId);
         return ReviewModel
             .createReview(userId,hotelId,reviewNew)
             .then(function (review) {
-                console.log(review);
-                return model.hotelModel
-                    .findHotelByIbiboHotelId(hotelReview._hotel)
-                    .then(function (hotelObj) {
-                        hotelObj.reviews.push(review._id);
-                        hotelObj.save();
-                    })
-                    //console.log(website);
-                    //res.sendStatus(200);
+                    res.json(review);
                 },
                 function (error) {
                     res.sendStatus(400).send(error);

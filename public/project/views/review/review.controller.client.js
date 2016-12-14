@@ -8,7 +8,7 @@
         .controller("NewReviewController", NewReviewController);
 
 
-    function NewReviewController($routeParams, ReviewService) {
+    function NewReviewController($routeParams, $location, ReviewService) {
         //console.log(vm.userId);
         var vm = this;
         vm.hotelId = $routeParams.hid;

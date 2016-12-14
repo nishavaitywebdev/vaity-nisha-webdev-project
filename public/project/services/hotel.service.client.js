@@ -17,7 +17,7 @@
 
 
     function findHotelByCityId(cityId) {
-        var url = "http://developer.goibibo.com/api/voyager/get_hotels_by_cityid/?app_id=14654cdf&app_key=1e64496250cc0415a50feda5b07a1c45&city_id="+cityId;
+        var url = "http://developer.goibibo.com/api/voyager/get_hotels_by_cityid/?app_id=14654cdf&app_key=1e64496250cc0415a50feda5b07a1c45&city_id="+cityId.toString();
         //console.log(url);
         return $http.get(url);
     }

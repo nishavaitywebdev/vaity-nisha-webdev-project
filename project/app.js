@@ -9,6 +9,6 @@ module.exports = function(app){
     require("./services/user.service.server.js")(app,model);
     require("./services/hotel.service.server.js")(app, model);
     require("./services/review.service.server.js")(app, model);
-    // require("./services/widget.service.server.js")(app, model);
+    require("./services/city.service.server.js")(app, model);
 
 };

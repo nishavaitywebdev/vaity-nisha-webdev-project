@@ -8,17 +8,18 @@ module.exports = function () {
     var userModel = require("./user/user.model.server")();
     var reviewModel = require("./review/review.model.server")();
     var hotelModel = require("./hotel/hotel.model.server")();
-    // var widgetModel = require("./widget/widget.model.server")();
+    var cityModel = require("./city/city.model.server")();
     var model = {
         userModel:userModel,
         reviewModel:reviewModel,
-        hotelModel:hotelModel
+        hotelModel:hotelModel,
+        cityModel:cityModel
         // widgetModel:widgetModel
     };
     hotelModel.setModel(model);
     reviewModel.setModel(model);
     userModel.setModel(model);
-    // widgetModel.setModel(model);
+    cityModel.setModel(model);
     return model;
 
 };

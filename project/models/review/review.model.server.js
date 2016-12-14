@@ -9,6 +9,7 @@ module.exports = function () {
     var api = {
         createReview:createReview,
         findReviewById:findReviewById,
+        findAllReviews: findAllReviews,
         updateReview : updateReview,
         deleteReview : deleteReview,
         setModel: setModel //,
@@ -22,6 +23,11 @@ module.exports = function () {
     }
 
 
+    function findAllReviews(hotelId) {
+        return ReviewModel.find({
+            'hotelId' : hotelId
+        });
+    }
     function findReviewById(reviewId) {
 
         return ReviewModel.findById(reviewId)
@@ -31,25 +37,40 @@ module.exports = function () {
     }
 
     function createReview(userId,hotelId,reviewNew) {
-        //console.log(review);
+        //console.log(reviewNew);
 
         return ReviewModel.create(reviewNew)
             .then(function(reviewObject){
-                model.userModel
+                return model.userModel
                     .findUserById(userId)
                     .then(function(userObject) {
-                        reviewObject._user = userObject._id;
-                        reviewObject.save();
-                        userObject.reviews.push(reviewObject);
-                        userObject.save();
-                        model.hotelModel
+                        return model.hotelModel
                             .findHotelByIbiboHotelId(hotelId)
                             .then(function (hotelObj) {
+                                userObject.reviews.push(reviewObject);
+                                userObject.save();
                                 hotelObj.reviews.push(reviewObject);
-                                return hotelObj.save();
-                            })
-                    });
-            });
+                                hotelObj.save();
+                                reviewObject._user = userObject._id;
+                                reviewObject.username = userObject.username;
+                                reviewObject._hotel = hotelObj._id;
+                                reviewObject.save();
+                                return reviewObject.save();
+                            },
+                                function(error){
+                                    console.log("in model restaurant error");
+                                    console.log(error);
+                                });
+                    },
+                        function(error){
+                            console.log("in model restaurant error");
+                            console.log(error);
+                        });
+            },
+                function(error){
+                    console.log("in model restaurant error");
+                    console.log(error);
+                });
     }
 
 

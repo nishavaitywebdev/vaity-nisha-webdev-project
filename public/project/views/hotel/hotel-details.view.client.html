@@ -51,13 +51,13 @@
                     </div>
                     <ol class="comment-list">
 
-                        <!--ng-repeat="userReview in model.hotelReviews"-->
-                        <li class="comment">
+                        <!--ng-repeat="userReview in model.Reviews"-->
+                        <li ng-repeat="userReview in model.Reviews" class="comment">
                             <article class="comment-body">
                                 <footer class="comment-meta">
                                     <div class="comment-author vcard">
                                         <img src="https://secure.gravatar.com/avatar/3e4153bc3fc407dfeca1bce714d933df?s=60&amp;d=mm&amp;r=g" width="60" height="60" alt="" class="avatar avatar-60wp-user-avatar wp-user-avatar-60 alignnone photo avatar-default">
-                                        <b class="fn">{{userReview.username}}</b> <span class="says">says:</span>
+                                        <b class="fn">{{userReview.username}}</b> <span class="says"> says:</span>
                                     </div><!-- .comment-author -->
 
                                     <div class="comment-metadata">
@@ -71,12 +71,13 @@
                                 </footer><!-- .comment-meta -->
 
                                 <div class="comment-content">
-                                    <p>{{userReview.content}}</p>
+                                    <p>{{userReview.comment}}</p>
                                 </div><!-- .comment-content -->
                             </article>
 
                                 <!--<div class="reply"><a rel="nofollow" class="comment-reply-link btn btn-sm btn-default" href="https://indiahikes.com/top-6-winter-treks-in-india-that-you-must-do/?replytocom=908#respond" onclick="return addComment.moveForm( &quot;div-comment-908&quot;, &quot;908&quot;, &quot;respond&quot;, &quot;21636&quot; )" aria-label="Reply to Amit Chaudhary" style="display: inline;">Reply</a></div>			</article>&lt;!&ndash; .comment-body &ndash;&gt;-->
                         </li><!-- #comment-## -->
+
 
                     </ol>
                     </div>
