@@ -50,7 +50,7 @@
                 <div>
                     <div class="row">
                         <h1 class="heading-color">Reviews</h1>
-                        <a type="button" class="btn btn-success"  href="#/user/{{model.userId}}/hotel/{{model.hotelId}}/new">Add Review</a>
+                        <a type="button" class="btn btn-success"  href="#/user/{{model.userId}}/city/{{model.cityId}}/hotel/{{model.hotelId}}/new">Add Review</a>
                     </div>
                     <ol class="comment-list">
 
@@ -79,7 +79,7 @@
                                 <div class="comment-content">
                                     <p>{{userReview.comment}}</p>
                                 </div><!-- .comment-content -->
-                                <a ng-show="model.userId == userReview._user" href="#/user/{{model.userId}}/hotel/{{model.hotelId}}/review/{{userReview._id}}/edit">
+                                <a ng-show="model.userId == userReview._user" href="#/user/{{model.userId}}/city/{{model.cityId}}/hotel/{{model.hotelId}}/review/{{userReview._id}}/edit">
                                     <span class="fa fa-pencil fa-lg pull-right"></span>
                                 </a>
 

@@ -22,12 +22,12 @@
                 controller: "HotelListController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/hotel/:hid/new",{
+            .when("/user/:uid/city/:cid/hotel/:hid/new",{
                 templateUrl: "/project/views/review/new-review.view.client.html",
                 controller: "NewReviewController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/hotel/:hid/review/:rid/edit",{
+            .when("/user/:uid/city/:cid/hotel/:hid/review/:rid/edit",{
                 templateUrl: "/project/views/review/edit-review.view.client.html",
                 controller: "EditReviewController",
                 controllerAs: "model"

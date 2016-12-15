@@ -13,6 +13,7 @@
         var vm = this;
         vm.hotelId = $routeParams.hid;
         vm.userId = $routeParams.uid;
+        vm.cityId = $routeParams.cid;
 
         vm.addReview = addReview;
 
@@ -32,12 +33,17 @@
 
         function addReview(userId, hotelId, hotelReview) {
             hotelReview._hotel = hotelId;
+            vm.hotelId = $routeParams.hid;
+            vm.userId = $routeParams.uid;
+            vm.cityId = $routeParams.cid;
             //console.log(hotelReview);
 
                 var promise = ReviewService.createReview(userId, hotelReview);
                 promise
                     .success(function (data) {
-                        $location.url("#/user/" + userId + "/hotelDetails/"+ hotelId);
+                        var URL = "/user/" + vm.userId +"/city/"+vm.cityId+ "/hotelDetails/"+ vm.hotelId;
+                        console.log()
+                        $location.url(URL);
                     })
                     .error(function () {
 
@@ -64,6 +70,7 @@
         vm.hotelId = $routeParams.hid;
         vm.userId = $routeParams.uid;
         vm.reviewId = $routeParams.rid;
+        vm.cityId = $routeParams.cid;
 
         vm.updateReview = updateReview;
         vm.deleteReview = deleteReview;
@@ -741,18 +748,26 @@
         // };
 
         function updateReview(newReview) {
+            vm.hotelId = $routeParams.hid;
+            vm.userId = $routeParams.uid;
+            vm.reviewId = $routeParams.rid;
+            vm.cityId = $routeParams.cid;
             var promise = ReviewService.updateReview(vm.reviewId, newReview);
             promise.success(function (data) {
                 //console.log(data);
-                $location.url("#/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+                $location.url("/user/" + vm.userId +"/city/"+vm.cityId+ "/hotelDetails/"+ vm.hotelId);
 
             })
         }
 
         function deleteReview(reviewId) {
+            vm.hotelId = $routeParams.hid;
+            vm.userId = $routeParams.uid;
+            vm.reviewId = $routeParams.rid;
+            vm.cityId = $routeParams.cid;
             var promise = ReviewService.deleteReview(reviewId);
             promise.success(function (data) {
-                $location.url("#/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+                $location.url("/user/" + vm.userId +"/city/"+vm.cityId+ "/hotelDetails/"+ vm.hotelId);
 
             })
         }
