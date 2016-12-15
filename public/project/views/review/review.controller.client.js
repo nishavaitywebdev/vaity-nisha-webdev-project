@@ -37,7 +37,7 @@
                 var promise = ReviewService.createReview(userId, hotelReview);
                 promise
                     .success(function (data) {
-                        $location.url("/user/" + userId + "/hotelDetails/"+ hotelId);
+                        $location.url("#/user/" + userId + "/hotelDetails/"+ hotelId);
                     })
                     .error(function () {
 
@@ -744,7 +744,7 @@
             var promise = ReviewService.updateReview(vm.reviewId, newReview);
             promise.success(function (data) {
                 //console.log(data);
-                $location.url("/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+                $location.url("#/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
 
             })
         }
@@ -752,7 +752,7 @@
         function deleteReview(reviewId) {
             var promise = ReviewService.deleteReview(reviewId);
             promise.success(function (data) {
-                $location.url("/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+                $location.url("#/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
 
             })
         }
