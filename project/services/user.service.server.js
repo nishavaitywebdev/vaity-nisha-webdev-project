@@ -52,6 +52,7 @@ module.exports = function(app,model){
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/checkAdmin', checkAdmin);
     app.post('/api/logout', logout);
+    app.get('/api/getAllUsers/', getAllUsers);
     app.get('/api/user', findUser);
     app.post ('/api/register', register);
     app.put('/api/follower/', addFollower);
@@ -63,6 +64,13 @@ module.exports = function(app,model){
     app.delete('/api/user/:userId', loggedInAndSelf, deleteUser);
 
 
+
+    function getAllUsers(req, res) {
+        model.userModel.findAllUsers()
+            .then(function (users) {
+                res.send(users);
+            })
+    }
     function addFollower(req, res) {
         var followerId = req.body.followerId;
         var followeeId = req.body.followeeId;

@@ -8,12 +8,12 @@ module.exports = function(app, model){
     app.get("/api/hotel/review/:hid", findReviewByHotelId);
     app.get("/api/review/:rid", findReviewById);
     app.post("/api/user/:uid/review", createReview);
-    app.put("/api/review/:rid", updateReview);
-    app.delete("/api/review/:rid", deleteReview);
+    app.put("/api/editReview/:rid", updateReview);
+    app.delete("/api/delReview/:rid", deleteReview);
 
 
     function findReviewByHotelId(req, res) {
-        console.log("Found reviews");
+        //console.log("Found reviews");
         var hotelId = req.params.hid;
         return ReviewModel
                     .findAllReviews(hotelId)
@@ -48,7 +48,7 @@ module.exports = function(app, model){
         ReviewModel
             .findReviewById(reviewId)
             .then(function (review) {
-                    console.log(review);
+                    //console.log(review);
                     res.send(review);
                 },
                 function (error) {
@@ -57,6 +57,7 @@ module.exports = function(app, model){
     }
 
     function updateReview(req, res){
+        console.log("In update");
         var review = req.body;
         var reviewId = req.params.rid;
         ReviewModel

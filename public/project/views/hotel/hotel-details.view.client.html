@@ -1,13 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
+            <a class="" href="#/user/{{model.userId}}/city/{{model.cityId}}"><span class="glyphicon glyphicon-chevron-left white-glyphicon">
+              </span></a>
             <a class=" navbar-text-decor" href="#">
                 HOTEL MANIA
             </a>
-            <!--<a href="#/login" ng-click = "" class="">-->
-              <!--<span class="fa fa-sign-in fa-lg white-glyphicon pull-right">-->
-              <!--</span>-->
-            <!--</a>-->
+            <a href="#" class="">
+
+              <span class="fa fa-user fa-lg white-glyphicon pull-right">Hi, {{model.user.username}}. Followers - {{model.user.followers.length}}
+              </span>
+            </a>
         </div>
     </div>
     </div>
@@ -69,13 +72,17 @@
                                         </a>
                                     </div><!-- .comment-metadata -->
 
-                                    <star-rating ng-model="rating.rating2" readonly="rating.isReadonly"></star-rating>
+                                    <!--<star-rating ng-model="rating.rating2" readonly="rating.isReadonly"></star-rating>-->
 
                                 </footer><!-- .comment-meta -->
 
                                 <div class="comment-content">
                                     <p>{{userReview.comment}}</p>
                                 </div><!-- .comment-content -->
+                                <a ng-show="model.userId == userReview._user" href="#/user/{{model.userId}}/hotel/{{model.hotelId}}/review/{{userReview._id}}/edit">
+                                    <span class="fa fa-pencil fa-lg pull-right"></span>
+                                </a>
+
                             </article>
 
                                 <!--<div class="reply"><a rel="nofollow" class="comment-reply-link btn btn-sm btn-default" href="https://indiahikes.com/top-6-winter-treks-in-india-that-you-must-do/?replytocom=908#respond" onclick="return addComment.moveForm( &quot;div-comment-908&quot;, &quot;908&quot;, &quot;respond&quot;, &quot;21636&quot; )" aria-label="Reply to Amit Chaudhary" style="display: inline;">Reply</a></div>			</article>&lt;!&ndash; .comment-body &ndash;&gt;-->

@@ -14,9 +14,9 @@
 </nav>
     <div class="container-fluid padding-navbar">
         <div>
-            <label>Followers</label>
+            <label>Followers - {{model.followerSize}}</label>
             <ul><li ng-repeat="f in model.user.followerNames">{{f}}</li></ul>
-            <label>Following</label>
+            <label>Following - {{model.followingSize}}</label>
             <ul><li ng-repeat="f in model.user.followingNames">{{f}}</li></ul>
         </div>
         <form>

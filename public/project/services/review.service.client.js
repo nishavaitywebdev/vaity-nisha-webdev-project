@@ -34,11 +34,13 @@
         }
 
         function updateReview(reviewId, reviewUpdated) {
-            var url = "/api/review/"+reviewId;
+            var url = '/api/editReview/'+reviewId;
+            console.log(url);
             return $http.put(url,reviewUpdated);
         }
         function deleteReview(reviewId) {
-            var url = "/api/review/"+reviewId;
+            var url = '/api/delReview/'+reviewId;
+            console.log(url);
             return $http.delete(url);
         }
 

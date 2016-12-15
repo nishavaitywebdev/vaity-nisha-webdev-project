@@ -99,7 +99,9 @@
                     .success(function(user){
                         if(user != null){
                             vm.user = user;
-                            //console.log(vm.user);
+                            vm.followerSize = vm.user.followerNames.length;
+                            vm.followingSize = vm.user.followingNames.length;
+                            console.log(vm.followerSize);
                         }
                     })
                     .error(function(){

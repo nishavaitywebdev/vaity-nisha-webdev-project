@@ -1,12 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
+            <a class="" href="#/user/{{model.userId}}/home"><span class="glyphicon glyphicon-chevron-left white-glyphicon">
+              </span></a>
             <a class=" navbar-text-decor" href="#">
                 HOTEL MANIA
             </a>
-            <!--<a href="#/login">-->
-                <!--<span class="fa fa-sign-in fa-lg white-glyphicon pull-right"></span>-->
-            <!--</a>-->
+            <a href="#" class="">
+
+              <span class="fa fa-user fa-lg white-glyphicon pull-right">Hi, {{model.user.username}}. Followers - {{model.user.followers.length}}
+              </span>
+            </a>
         </div>
     </div>
 </nav>
@@ -22,7 +26,7 @@
             <div class="col-sm-12 col-lg-8" >
                 <!--for rating and Full name and other details {{hotel.hotel_data_node.name}}-->
                 <div>
-                    <h1><a href="#/user/{{model.userId}}/hotelDetails/{{hotel.hotel_data_node._id}}">{{hotel.hotel_data_node.name}}</a></h1>
+                    <h1><a href="#/user/{{model.userId}}/city/{{model.cityId}}/hotelDetails/{{hotel.hotel_data_node._id}}">{{hotel.hotel_data_node.name}}</a></h1>
                     <h4>{{hotel.hotel_data_node.loc.city}}</h4>
                     <h4>{{hotel.hotel_data_node.loc.cnt_code}}</h4>
                     <h4>{{hotel.hotel_data_node.loc.pin}}</h4>

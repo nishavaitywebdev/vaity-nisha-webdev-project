@@ -12,12 +12,21 @@
     </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <ul>
-        <li ng-repeat="user in users">
-            {{user.firstName}}
-        </li>
-    </ul>>
+<div class="container-fluid padding-navbar">
+    <button class="btn btn-success" ng-click="model.getAllUsers()">All users</button>
+
+
+    <div class="div-website-list text-color-website-list">
+        <ul class="list-group">
+            <li ng-repeat="user in model.users" class="list-group-item">
+
+                <p><a href="#">{{user.username}}</a></p>
+            </li>
+        </ul>
+    </div>
+
+    <a class="btn btn-success  btn-block" ng-click="model.logout()"
+       href="#/login">Logout</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

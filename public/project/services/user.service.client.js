@@ -22,6 +22,7 @@
             findUserByCredentials : findUserByCredentials,
             updateUser : updateUser,
             deleteUser : deleteUser,
+            getAllUsers: getAllUsers,
             login:login,
             logout:logout,
             register:register,
@@ -31,6 +32,11 @@
 
     };
         return api;
+
+        function getAllUsers() {
+            var url = '/api/getAllUsers/';
+            return $http.get(url);
+        }
 
 
         function addFollower(followerId, followeeId) {

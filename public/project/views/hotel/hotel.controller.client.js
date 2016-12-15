@@ -12,17 +12,25 @@
 
     //$routeParams, HotelService
 
-    function CityListController($routeParams, HotelService, ReviewService) {
+    function CityListController($routeParams,UserService, HotelService, ReviewService) {
         var vm = this;
         vm.userId = $routeParams.uid;
         function init() {
             vm.userId = $routeParams.uid;
+            var promise = UserService.findUserById(vm.userId);
+            promise
+                .success(function (user) {
+                    vm.user = user;
+                    console.log(vm.user);
+                })
+
         }init()
     }
     function HotelDetailsController($location, $routeParams, HotelService, ReviewService, UserService) {
         var vm = this;
         vm.hotelId = $routeParams.hid;
         vm.userId = $routeParams.uid;
+        vm.cityId = $routeParams.cid;
 
         vm.addFollower = addFollower;
 
@@ -46,17 +54,12 @@
                 .success(function (hotelDetails) {
                     vm.hotelDetails = hotelDetails.data[vm.hotelId].hotel_data_node;
                     HotelService.createHotel(vm.hotelId);
-                    // promHOtCreate.
-                    //     success(function (data) {
-                    //     console.log(data);
-                    // })
-                    //     .error(function (err) {
-                    //         console.log(err);
-                    //     })
+
                     var prom = ReviewService.findReviewByHotelId(vm.hotelId);
                     prom
                         .success(function (UserReviews) {
                             vm.Reviews = UserReviews;
+                            console.log(UserReviews);
                         })
                         .error(function (err) {
                             console.log(err);
@@ -65,6 +68,11 @@
                 .error(function (err) {
                     console.log(err);
                 });
+            var promise1 = UserService.findUserById(vm.userId);
+            promise1
+                .success(function (user) {
+                    vm.user = user;
+                })
 
 
             // var promise1 = HotelService.createHotel(vm.hotelId);
@@ -95,7 +103,7 @@
 
     }
 
-    function HotelListController($routeParams, HotelService, CityService) {
+    function HotelListController($routeParams,UserService, HotelService, CityService) {
         //console.log("Hello in hotel list controller");
         var vm = this;
         vm.userId = $routeParams.uid;
@@ -115,26 +123,7 @@
             //console.log("Hi");
             vm.cityId = $routeParams.cid;
             vm.userId = $routeParams.uid;
-            // //console.log(vm.cityName);
-            // var promise = CityService.findCityByName(vm.cityName);
-            // promise
-            //         .success(function (city) {
-            //             console.log(city);
-            //             var promise = HotelService.findHotelByCityId(city["City ID"]);
-            //             promise
-            //                 .success(function (hotels) {
-            //                     console.log(hotels);
-            //                     vm.hotels_list = hotels.data;
-            //
-            //                 })
-            //                 .error(function () {
-            //
-            //                 });
-            //
-            //         })
-            //         .error(function () {
-            //
-            //         });
+
             var promise = HotelService.findHotelByCityId(vm.cityId);
             promise
                 .success(function (hotels) {
@@ -143,6 +132,11 @@
                 .error(function () {
 
                 });
+            var promise1 = UserService.findUserById(vm.userId);
+            promise1
+                .success(function (user) {
+                    vm.user = user;
+                })
             // vm.hotels_list = hotel_list;
             //console.log(vm.hotels_list);
         }

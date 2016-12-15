@@ -4,7 +4,7 @@
 (function() {
     var app = angular
         .module("MakeYourTourApp")
-        .controller("ReviewEditController", ReviewEditController)
+        .controller("EditReviewController", EditReviewController)
         .controller("NewReviewController", NewReviewController);
 
 
@@ -58,9 +58,15 @@
 
     }
 
-    function ReviewEditController($routeParams, ReviewService) {
+    function EditReviewController($routeParams, $location, ReviewService, HotelService) {
         //console.log("Hello in hotel list controller");
         var vm = this;
+        vm.hotelId = $routeParams.hid;
+        vm.userId = $routeParams.uid;
+        vm.reviewId = $routeParams.rid;
+
+        vm.updateReview = updateReview;
+        vm.deleteReview = deleteReview;
 
         // vm.userId = $routeParams["uid"];
         // vm.cityId = $routeParams["cityId"];
@@ -734,25 +740,31 @@
         //     }
         // };
 
+        function updateReview(newReview) {
+            var promise = ReviewService.updateReview(vm.reviewId, newReview);
+            promise.success(function (data) {
+                //console.log(data);
+                $location.url("/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+
+            })
+        }
+
+        function deleteReview(reviewId) {
+            var promise = ReviewService.deleteReview(reviewId);
+            promise.success(function (data) {
+                $location.url("/user/" + vm.userId + "/hotelDetails/"+ vm.hotelId);
+
+            })
+        }
+
         function init() {
             //console.log("Hi");
-            var promise = HotelService.findHotelByCityId("1735253871019858688");
+            var promise = ReviewService.findReviewById(vm.reviewId);
             promise
-                .success(function (hotels) {
-                    // console.log(hotels.data.hotel_data_node.rating);
-                    // var x = [];
-                    // x.push(hotels.data);
-                    // vm.hotels_list = x.slice(0,5);
-                    vm.hotels_list = hotels.data;
-                    // vm.currentPage = 0;
-                    // vm.pageSize = 10;
-                    // vm.hotels = {};
-                    // var h = vm.hotels_list;
-                    // for (var i = 0; h.length; i++) {
-                    //     vm.hotels.add(h[i]);
-                    // }
-                    // vm.hotels_length = hotels_list.length;
-                    // console.log(vm.hotels_length);
+                .success(function (review) {
+
+                    vm.review = review;
+
                 })
                 .error(function () {
 

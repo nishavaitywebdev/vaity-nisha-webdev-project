@@ -12,12 +12,12 @@
                 controller: "CityListController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/hotelDetails/:hid",{
+            .when("/user/:uid/city/:cid/hotelDetails/:hid",{
                 templateUrl: "/project/views/hotel/hotel-details.view.client.html",
                 controller: "HotelDetailsController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/hotel/:cid", {
+            .when("/user/:uid/city/:cid", {
                 templateUrl: "/project/views/hotel/hotel-list.view.client.html",
                 controller: "HotelListController",
                 controllerAs: "model"
@@ -25,6 +25,11 @@
             .when("/user/:uid/hotel/:hid/new",{
                 templateUrl: "/project/views/review/new-review.view.client.html",
                 controller: "NewReviewController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/hotel/:hid/review/:rid/edit",{
+                templateUrl: "/project/views/review/edit-review.view.client.html",
+                controller: "EditReviewController",
                 controllerAs: "model"
             })
             .when("/login", {
@@ -43,18 +48,18 @@
                 controllerAs: "model"
             })
             .when("/registerAdmin", {
-                templateUrl: "/project/views/user/register.view.client.html",
+                templateUrl: "/project/views/admin/admin-register.view.client.html",
                 controller: "AdminRegisterController",
                 controllerAs: "model"
             })
-            // .when("/user", {
-            //     templateUrl: "/project/views/user/profile.view.client.html",
-            //     controller: "ProfileController",
-            //     controllerAs: "model",
-            //     resolve: {
-            //         checkLogin: checkLogin
-            //     }
-            // })
+            .when("/user", {
+                templateUrl: "/project/views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {
+                    checkLogin: checkLogin
+                }
+            })
             .when("/userAdmin", {
                 templateUrl: "/project/views/admin/admin-home.view.client.html",
                 controller: "AdminProfileController",

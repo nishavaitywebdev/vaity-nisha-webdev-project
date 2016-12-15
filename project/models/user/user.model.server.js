@@ -12,6 +12,7 @@ module.exports = function () {
         findUserByUsername : findUserByUsername,
         findUserByCredentials:findUserByCredentials,
         updateUser : updateUser,
+        findAllUsers:findAllUsers,
         deleteUser : deleteUser,
         findUserByFacebookId: findUserByFacebookId,
         addFollower: addFollower,
@@ -20,6 +21,9 @@ module.exports = function () {
     };
     return api;
 
+    function findAllUsers() {
+        return UserModel.find();
+    }
     function addFollower(followerId, followeeId) {
         return model.userModel
             .findUserById(followerId)
