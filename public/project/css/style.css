@@ -156,4 +156,21 @@ a:hover {
 /*&.readonly .star.filled {*/
      /*color: #666;*/
  /*}*/
-
+.ng-submitted.ng-invalid{
+    /*background-color: #a94442;*/
+    background-color: #ffa3a3;
+}
+.ng-submitted .ng-invalid{
+    background-color: #ffeded;
+}
+form{
+    padding: 3px;
+}
+.error{
+    color: #a94442;
+    margin-bottom: 20px;
+}
+.ng-invalid .error{
+    color: #a94442;
+    margin-bottom: 20px;
+}

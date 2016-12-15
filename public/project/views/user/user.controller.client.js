@@ -44,45 +44,25 @@
 
             }
         }
-        function RegisterController($rootScope,$location,UserService) {
-            var vm = this;
-            //console.log("In project user controller");
+    function RegisterController($scope,$rootScope,$location,UserService) {
+        var vm = this;
 
-            vm.createUser = createUser;
-            function createUser(user) {
-
-                if(user == undefined)
-                    vm.alert = "Username and Password required. Re-enter password";
-                else {
-                    if (!user.username) {
-                        vm.alert = "Username required";
-                    }
-                    else if (!user.password) {
-                        vm.alert = "Password required";
-                    }
-                    else if (!user.veryPassword) {
-                        vm.alert = "Please re enter password required";
-                    }
-                    else if (user.veryPassword != user.password) {
-                        vm.alert = "Passwords do not match";
-                    }
-                    else if (!user.username && !user.password && !user.veryPassword) {
-                        vm.alert = "Username and Password required. Re-enter password";
-                    }
-                    else {
-
-                        UserService
-                            .register(user)
-                            .then(
-                                function (response) {
-                                    var user = response.data;
-                                    $rootScope.currentUser = user;
-                                    $location.url("/user/" + user._id);
-                                });
-
-                    }
-
-                }
+        vm.createUser = createUser;
+        function createUser(user) {
+            console.log($scope.register);
+            if(!$scope.register.$invalid && user.password == user.veryPassword){
+                UserService
+                    .register(user)
+                    .then(
+                        function (response) {
+                            var user = response.data;
+                            $rootScope.currentUser = user;
+                            $location.url("/user/" + user._id);
+                        });
+            }
+            else{
+                vm.veryPasswordAlert = "Passwords do not match";
+            }
             }
         }
 
