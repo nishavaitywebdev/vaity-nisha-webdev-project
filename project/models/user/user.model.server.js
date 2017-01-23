@@ -60,12 +60,12 @@ module.exports = function () {
     }
 
     function createUser(user) {
-        console.log("In project");
+
         return UserModel.create(user);
     }
 
     function findUserByCredentials(username, password) {
-
+        console.log("Login");
         return UserModel.findOne({
             username:username,
             password:password

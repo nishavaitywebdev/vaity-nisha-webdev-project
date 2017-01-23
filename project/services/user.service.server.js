@@ -214,6 +214,7 @@ module.exports = function(app,model){
                 });
     }
         function login(req, res) {
+            console.log("Login");
             var user  = req.user;
             res.json(user);
         }

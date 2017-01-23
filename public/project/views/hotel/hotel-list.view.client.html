@@ -19,20 +19,23 @@
     <!---->
     <div class="container-fluid padding-navbar">
         <div class="col-lg-12 row"  ng-repeat="hotel in model.hotels_list" >
-            <div class="col-sm-12 col-lg-4" style="padding-top: 15px">
+            <section class="hotel-item-box">
+                <!--style="padding-top: 15px"-->
+            <div class=" col-md-12 col-lg-4 pull-left" >
                 <!--for image of hotel -->
-                <img style="padding:10px" src="{{hotel.hotel_data_node.img_selected.thumb.l}}" height="200px" width="300px"/>
+                <img class="pull-left" style="padding:10px" src="{{hotel.hotel_data_node.img_selected.thumb.l}}" height="200px" width="300px"/>
             </div>
-            <div class="col-sm-12 col-lg-8" >
+            <div class="  col-md-12 col-lg-8" >
                 <!--for rating and Full name and other details {{hotel.hotel_data_node.name}}-->
                 <div>
-                    <h1><a href="#/user/{{model.userId}}/city/{{model.cityId}}/hotelDetails/{{hotel.hotel_data_node._id}}">{{hotel.hotel_data_node.name}}</a></h1>
-                    <h4>{{hotel.hotel_data_node.loc.city}}</h4>
-                    <h4>{{hotel.hotel_data_node.loc.cnt_code}}</h4>
-                    <h4>{{hotel.hotel_data_node.loc.pin}}</h4>
+                    <h3><a href="#/user/{{model.userId}}/city/{{model.cityId}}/hotelDetails/{{hotel.hotel_data_node._id}}">{{hotel.hotel_data_node.name}}</a></h3>
+                    <h4>{{hotel.hotel_data_node.loc.city}}, {{hotel.hotel_data_node.loc.cnt_code}} - {{hotel.hotel_data_node.loc.pin}}</h4>
                     <h4>Rating: {{hotel.hotel_data_node.rating}}</h4>
                 </div>
             </div>
+            <!--<br>-->
+
+            </section>
             <br>
         </div>
 
