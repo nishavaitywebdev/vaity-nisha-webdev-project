@@ -37,9 +37,9 @@ module.exports = function(app,model){
         }));
 
     var facebookConfig = {
-        clientID    :   "302238760175775",
-        clientSecret : "666d0c6ad902fc6d36c2c1cf2f882fbd",
-        callbackURL  : "http://localhost:3000/auth/facebook/callback"
+        clientID    :   process.env.CLIENT_ID,
+        clientSecret : process.env.CLIENT_SECRET,
+        callbackURL  : process.env.CLIENT_CALLBACK
     }
 
     passport.use(new LocalStrategy(localStrategy));
